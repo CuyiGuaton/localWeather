@@ -1,11 +1,5 @@
-var latitude = 0;
-var longitude = 0;
-
-if (navigator.geolocation) {
-  navigator.geolocation.getCurrentPosition(function(position) {
-    latitude= position.coords.latitude ;
-     longitude= position.coords.longitude;
-    
-  });
-      $("#latitude").html(latitude);
-}
+$.getJson("http://ip-api.com/json/?callback=?", function(data){
+  var latitude = data.lat;
+  var longitude = data.lon;
+});
+$("#latitude").html(latitude);
