@@ -1,5 +1,13 @@
-$.getJson("http://ip-api.com/json/?callback=?", function(data){
-  var latitude = data.lat;
-  var longitude = data.lon;
+
+function getCurrentLocationWeather(){
+
+  $.getJSON("http://ip-api.com/json/?callback=", function(data){
+    var lat=data.lat;
+    var lon= data.lon;
+    $("#pico").html(lon);
+  });
+}
+
+$(document).ready(function() {
+  getCurrentLocationWeather();
 });
-$("#latitude").html(latitude);
