@@ -16,5 +16,5 @@ function getCurrentWeather(lat, lon){
 
 $(document).ready(function() {
   getCurrentLocation();
-  $('body').css('background-image', 'url(background/earth.jpg)');
+  $('body').css('background-image', 'url(background/rem.png)');
 });
