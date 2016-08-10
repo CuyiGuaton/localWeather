@@ -30,3 +30,6 @@ navbar-nav{
 background: rgba(255,255,255,0.7);
 
 }
+.clearfix {
+  overflow: auto;
+}
