@@ -2,11 +2,24 @@
 body {
   background-size: cover;
 }
-.container
-{
+
+body > .container{
 margin:10% auto auto auto;
 max-width:600px;
 max-height: 700px;
 background: rgba(255,255,255,0.7);
 
+}
+ .wi{
+    font-size: 200%;
+ }
+
+.footer {
+
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  background: rgba(255,255,255,0.0);
 }
