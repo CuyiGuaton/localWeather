@@ -10,7 +10,7 @@ function getCurrentLocation(){
 function getCurrentWeather(lat, lon){
   $.getJSON("http://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon +"&appid=424337f4099555b5b5d0da826201e9c2", function(data){
 
-    alert( data.main.temp);
+    $("#temp").html(data.main.temp);
 
   });
 }
