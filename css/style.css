@@ -1,0 +1,11 @@
+
+body {
+  background-size: cover;
+}
+.container
+{
+margin:10% auto auto auto;
+max-width:500px;
+background: rgba(49, 49, 49, 0.3);
+box-shadow: 0 8px 7px -7px #000;
+}
