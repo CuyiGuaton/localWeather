@@ -1,18 +1,20 @@
-var temp, temp_min, temp_max=0;
+var t=0;
+var tmin=0;
+var tmax=0;
+
 
 function getCurrentLocation(){
-  $.getJSON("http://ip-api.com/json/?callback=", function(data){
+  $.getJSON("https://freegeoip.net/json/", function(data){
     $("#city").html(data.city );
-    $(".flag-icon").addClass("flag-icon-" + data.countryCode.toLowerCase());
-    getCurrentWeather(data.lat, data.lon);
+    $(".flag-icon").addClass("flag-icon-" + data.country_code.toLowerCase());
+    getCurrentWeather(data.latitude, data.longitude);
   });
 }
-
 function getCurrentWeather(lat, lon){
   $.getJSON("http://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon +"&appid=424337f4099555b5b5d0da826201e9c2", function(data){
-    temp = data.main.temp;
-    temp_min= data.main.temp_min ;
-    temp_max = data.main.temp_max;
+    t = data.main.temp;
+    tmin= data.main.temp_min ;
+    tmax = data.main.temp_max;
     $("#temp").html(Math.round(data.main.temp - 273.15) + "°C");
     $("#max").html(Math.round(data.main.temp_max - 273.15) + "°C");
     $("#min").html(Math.round(data.main.temp_min - 273.15) + "°C");
@@ -30,15 +32,15 @@ $(document).ready(function() {
   $("#change").unbind("click").click(function() {
     if(flag  == 0){
         $("#grade").html("Fahrenheit");
-        $("#temp").html(Math.round(temp - 273.15) + "°C");
-        $("#max").html(Math.round(temp_max- 273.15) + "°C");
-        $("#min").html(Math.round(temp_min- 273.15) + "°C");
+        $("#temp").html(Math.round(t*9/5 - 459.67) + "°F");
+        $("#max").html(Math.round(tmax*9/5 - 459.67) + "°F");
+        $("#min").html(Math.round(tmin*9/5 - 459.67) + "°F");
         flag = 1;
     }else{
       $("#grade").html("Celsius");
-      $("#temp").html(Math.round(temp*9/5 - 459.67) + "°F");
-      $("#max").html(Math.round(temp_max*9/5 - 459.67) + "°F");
-      $("#min").html(Math.round(temp_min*9/5 - 459.67) + "°F");
+      $("#temp").html(Math.round(t - 273.15) + "°C");
+      $("#max").html(Math.round(tmax- 273.15) + "°C");
+      $("#min").html(Math.round(tmin- 273.15) + "°C");
       flag = 0;
     }
     });
